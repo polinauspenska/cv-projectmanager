@@ -59,29 +59,32 @@
       height: 250px;
       overflow: hidden;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark);
     }
 
     .photo-wrap img {
-      width: 100%;
-      height: 100%;
+      width: 170px;
+      height: 170px;
       object-fit: cover;
       object-position: top center;
       display: block;
-      transition: transform 0.5s ease, filter 0.4s ease;
-      filter: grayscale(15%);
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
+      filter: grayscale(10%);
     }
 
     .photo-wrap:hover img {
-      transform: scale(1.06);
+      transform: scale(1.05);
       filter: grayscale(0%);
+      box-shadow: 0 0 0 6px rgba(200,169,110,0.25);
     }
 
     .photo-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, transparent 70%, var(--dark));
-      pointer-events: none;
+      display: none;
     }
 
     .photo-placeholder {
