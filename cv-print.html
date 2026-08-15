@@ -12,7 +12,7 @@
 
     @page {
       size: A4;
-      margin: 14mm 16mm;
+      margin: 9mm 10mm;
     }
 
     :root {
@@ -93,7 +93,7 @@
     /* ── HEADER (mirrors web hero) ── */
     .cv-header {
       background: var(--dark);
-      padding: 12mm 14mm;
+      padding: 8mm 10mm;
       color: #fff;
       display: flex;
       align-items: center;
@@ -156,7 +156,8 @@
     .cv-body { padding: 0; }
 
     .cv-section {
-      padding: 9mm 14mm;
+      padding: 6mm 10mm;
+      break-inside: avoid-page;
     }
 
     .cv-section.on-light { background: #fff; }
@@ -218,7 +219,7 @@
       display: inline-block;
     }
 
-    .subgroup { margin-bottom: 7px; }
+    .subgroup { margin-bottom: 7px; page-break-inside: avoid; break-inside: avoid-page; }
     .subgroup:last-child { margin-bottom: 0; }
     .subgroup-label {
       font-size: 6.6pt;
@@ -234,7 +235,7 @@
     .skills-grid > *:last-child { margin-bottom: 0; }
 
     /* JOB CARDS */
-    .job { margin-bottom: 9px; padding-left: 10px; border-left: 2.5px solid var(--gold-dim); page-break-inside: avoid; }
+    .job { margin-bottom: 9px; padding-left: 10px; border-left: 2.5px solid var(--gold-dim); page-break-inside: avoid; break-inside: avoid-page; }
     .job:last-child { margin-bottom: 0; }
 
     .job-row {
@@ -287,7 +288,7 @@
     .edu-year { font-size: 7.8pt; color: var(--muted-dark); }
     .edu-note { display: block; font-size: 7.2pt; color: var(--muted-dark); line-height: 1.5; margin-top: 6px; }
 
-    .cert-item { margin-bottom: 7px; page-break-inside: avoid; }
+    .cert-item { margin-bottom: 7px; page-break-inside: avoid; break-inside: avoid-page; }
     .cert-item:last-child { margin-bottom: 0; }
     .cert-name { font-size: 8.4pt; font-weight: 600; color: var(--gold-bright); }
     .cert-org  { font-size: 7.4pt; color: var(--muted-dark); line-height: 1.4; }
@@ -525,20 +526,12 @@
           <div class="tag-row"><span class="pill">Shopify</span><span class="pill">WordPress</span><span class="pill">WooCommerce</span><span class="pill">OpenCart</span></div>
         </div>
         <div class="subgroup">
-          <div class="subgroup-label">CRM &amp; Automation</div>
-          <div class="tag-row"><span class="pill">HubSpot</span><span class="pill">Keap</span><span class="pill">Zapier</span></div>
-        </div>
-        <div class="subgroup">
-          <div class="subgroup-label">Email &amp; Lifecycle</div>
-          <div class="tag-row"><span class="pill">Klaviyo</span><span class="pill">Mailchimp</span><span class="pill">Stripo</span></div>
+          <div class="subgroup-label">CRM &amp; Marketing Technology</div>
+          <div class="tag-row"><span class="pill">HubSpot</span><span class="pill">Keap</span><span class="pill">Zapier</span><span class="pill">Klaviyo</span><span class="pill">Mailchimp</span><span class="pill">Stripo</span><span class="pill">Google Ads</span><span class="pill">Meta Business Suite</span></div>
         </div>
         <div class="subgroup">
           <div class="subgroup-label">Analytics &amp; SEO</div>
           <div class="tag-row"><span class="pill">Google Analytics 4</span><span class="pill">Looker Studio</span><span class="pill">Ahrefs</span><span class="pill">SEMrush</span><span class="pill">Similarweb</span><span class="pill">Hotjar</span><span class="pill">Supermetrics</span></div>
-        </div>
-        <div class="subgroup">
-          <div class="subgroup-label">Marketing Platforms</div>
-          <div class="tag-row"><span class="pill">Google Ads</span><span class="pill">Meta Business Suite</span></div>
         </div>
         <div class="subgroup">
           <div class="subgroup-label">AI &amp; Development Tools</div>
