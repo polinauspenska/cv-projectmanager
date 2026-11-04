@@ -271,10 +271,7 @@
     .btn-download span { position: relative; z-index: 1; }
 
     /* ── BODY ── */
-    .body {
-      display: grid;
-      grid-template-columns: 250px 1fr;
-    }
+    .body { display: block; }
 
     /* ── SIDEBAR (dark) ── */
     .sidebar {
@@ -758,6 +755,57 @@
     .footer:hover { color: var(--gold); }
     .footer:hover::before { left: 100%; }
 
+
+    /* ── SINGLE-COLUMN LAYOUT ── */
+    .content { padding: 40px 52px 8px; background: #fff; animation: fadeInUp 0.9s var(--ease) 0.4s both; }
+    .content.tail { padding-top: 8px; padding-bottom: 40px; animation-delay: 0.6s; }
+
+    .skills-band {
+      background: var(--dark2);
+      padding: 34px 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 56px;
+      position: relative;
+      animation: fadeInUp 0.9s var(--ease) 0.5s both;
+    }
+    .skills-band::before, .skills-band::after {
+      content: ''; position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,169,110,0.4) 30%, rgba(201,169,110,0.4) 70%, transparent);
+    }
+    .skills-band::before { top: 0; } .skills-band::after { bottom: 0; }
+    .skills-band .sidebar-section { margin-bottom: 20px; }
+    .skills-band .sidebar-section:last-child { margin-bottom: 0; }
+    .skills-band .sidebar-section h3 { color: var(--gold); font-size: 0.62rem; }
+
+    .main-sections { padding: 0 52px; }
+
+    /* EDU / CERT / LANG on light background */
+    .edu-light strong { display: block; color: var(--dark); font-size: 0.93rem; font-weight: 600; }
+    .edu-light .edu-meta { font-size: 0.82rem; font-style: italic; color: var(--muted-light); margin: 2px 0 8px; }
+    .edu-light p { font-size: 0.84rem; color: #555; line-height: 1.6; }
+
+    .cert-list { display: grid; gap: 2px; }
+    .cert-row {
+      display: grid; grid-template-columns: 1fr auto; gap: 2px 20px;
+      padding: 10px 14px; border-radius: 5px; border: 1px solid transparent;
+      transition: all 0.3s var(--ease);
+    }
+    .cert-row:hover { border-color: rgba(201,169,110,0.18); background: linear-gradient(to right, rgba(201,169,110,0.05), transparent 70%); transform: translateX(4px); }
+    .cert-row strong { color: var(--dark); font-size: 0.86rem; font-weight: 600; }
+    .cert-row .cert-org { font-size: 0.72rem; color: var(--gold-dim); font-weight: 600; letter-spacing: 0.5px; white-space: nowrap; }
+    .cert-row .cert-topics { grid-column: 1 / -1; font-size: 0.78rem; color: #888; }
+
+    .lang-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .lang-pill {
+      display: flex; align-items: center; gap: 10px; padding: 7px 8px 7px 16px;
+      border: 1px solid var(--border-light); border-radius: 24px; background: var(--cream);
+      font-size: 0.84rem; color: var(--dark); transition: all 0.3s var(--ease-spring); cursor: default;
+    }
+    .lang-pill span { font-size: 0.7rem; color: var(--gold-dim); background: rgba(201,169,110,0.12); padding: 2px 10px; border-radius: 12px; transition: all 0.25s ease; }
+    .lang-pill:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 6px 16px rgba(201,169,110,0.2); }
+    .lang-pill:hover span { background: var(--gold); color: var(--dark); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
       .header { grid-template-columns: 1fr; }
@@ -766,6 +814,11 @@
       .sidebar { border-right: none; border-bottom: 1px solid rgba(201,169,110,0.15); }
       .page { margin: 0; }
       .main { padding: 24px 18px; }
+      .content, .content.tail { padding-left: 18px; padding-right: 18px; }
+      .skills-band { grid-template-columns: 1fr; padding: 28px 18px; }
+      .job { padding: 14px 6px; }
+      .job:hover { transform: none; }
+      .cert-row { grid-template-columns: 1fr; padding: 10px 6px; }
       .header-info { padding: 24px 20px; }
       .header-info h1 { font-size: 2rem; }
     }
@@ -774,6 +827,8 @@
       .btn-download { display: none; }
       .page { box-shadow: none; margin: 0; }
       body { background: #fff; }
+      .content, .skills-band, .page { animation: none; }
+      .job, .cert-row { break-inside: avoid; }
     }
   </style>
 </head>
@@ -804,32 +859,61 @@
   <!-- BODY -->
   <div class="body">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <!-- PROFILE -->
+    <div class="content">
+      <div class="section">
+        <h2>Profile</h2>
+        <div class="profile-text">
+          <p>Digital &amp; E-Commerce Project Manager with 10+ years of experience across digital delivery, e-commerce, web platforms, digital operations and marketing. Experienced in managing cross-functional initiatives from requirements and planning through execution, website testing, launch and reporting, while coordinating development, design, content, SEO, business stakeholders and external vendors.</p>
+          <p>Strong working knowledge of CMS and e-commerce platforms, CRM automation, integrations, reporting and process design across the UAE and international markets. Skilled at translating business requirements into structured delivery plans, building workflows from scratch and bringing clarity and ownership to complex digital initiatives.</p>
+        </div>
+      </div>
+    </div>
 
+    <!-- SKILLS BAND -->
+    <div class="skills-band">
+      <div>
       <div class="sidebar-section">
         <h3>Core Skills</h3>
-        <ul>
-          <li>Digital Project Management</li>
-          <li>Digital Delivery &amp; Operations</li>
-          <li>E-Commerce Management &amp; Operations</li>
-          <li>Web Project Management &amp; Website Delivery</li>
-          <li>Project Planning &amp; Governance</li>
-          <li>Requirements Gathering &amp; Documentation</li>
-          <li>Workflow Design &amp; Process Improvement</li>
-          <li>Cross-Functional Team Coordination</li>
-          <li>Stakeholder &amp; Vendor Management</li>
-          <li>CRM &amp; Business Process Automation</li>
-        </ul>
+        <div>
+          <span class="skill-tag">Digital Project Management</span>
+          <span class="skill-tag">Digital Delivery &amp; Operations</span>
+          <span class="skill-tag">E-Commerce Management &amp; Operations</span>
+          <span class="skill-tag">Web Project Management &amp; Website Delivery</span>
+          <span class="skill-tag">Project Planning &amp; Governance</span>
+          <span class="skill-tag">Requirements Gathering &amp; Documentation</span>
+          <span class="skill-tag">Workflow Design &amp; Process Improvement</span>
+          <span class="skill-tag">Cross-Functional Team Coordination</span>
+          <span class="skill-tag">Stakeholder &amp; Vendor Management</span>
+          <span class="skill-tag">CRM &amp; Business Process Automation</span>
+        </div>
       </div>
-
       <div class="sidebar-section">
-        <h3>Technical Skills</h3>
-
-        <div class="tech-group">
-          <div class="tech-group-label">Web &amp; CMS</div>
-          <div>
-            <span class="skill-tag">HTML</span>
+        <h3>Data &amp; Reporting</h3>
+        <div>
+          <span class="skill-tag">Google Sheets</span>
+            <span class="skill-tag">Microsoft Excel</span>
+            <span class="skill-tag">Data Import/Export</span>
+            <span class="skill-tag">Spreadsheet Automation</span>
+            <span class="skill-tag">Dashboard &amp; Report Preparation</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <h3>Integrations &amp; Automation</h3>
+        <div>
+          <span class="skill-tag">APIs</span>
+            <span class="skill-tag">CRM Integrations</span>
+            <span class="skill-tag">Data Migration</span>
+            <span class="skill-tag">Marketing Automation</span>
+            <span class="skill-tag">Business Process Automation</span>
+        </div>
+      </div>
+      </div>
+      <div>
+      <div class="sidebar-section">
+        <h3>Web &amp; CMS</h3>
+        <div>
+          <span class="skill-tag">HTML</span>
             <span class="skill-tag">CSS</span>
             <span class="skill-tag">Basic JavaScript</span>
             <span class="skill-tag">Shopify</span>
@@ -837,106 +921,42 @@
             <span class="skill-tag">WooCommerce</span>
             <span class="skill-tag">OpenCart</span>
             <span class="skill-tag">CMS Management</span>
-          </div>
         </div>
-
-        <div class="tech-group">
-          <div class="tech-group-label">Data &amp; Reporting</div>
-          <div>
-            <span class="skill-tag">Google Sheets</span>
-            <span class="skill-tag">Microsoft Excel</span>
-            <span class="skill-tag">Data Import/Export</span>
-            <span class="skill-tag">Spreadsheet Automation</span>
-            <span class="skill-tag">Dashboard &amp; Report Preparation</span>
-          </div>
-        </div>
-
-        <div class="tech-group">
-          <div class="tech-group-label">Digital Delivery</div>
-          <div>
-            <span class="skill-tag">Website Testing</span>
+      </div>
+      <div class="sidebar-section">
+        <h3>Digital Delivery</h3>
+        <div>
+          <span class="skill-tag">Website Testing</span>
             <span class="skill-tag">UAT</span>
             <span class="skill-tag">Technical Documentation</span>
             <span class="skill-tag">Business Requirements</span>
             <span class="skill-tag">Website Development Coordination</span>
-          </div>
-        </div>
-
-        <div class="tech-group">
-          <div class="tech-group-label">Integrations &amp; Automation</div>
-          <div>
-            <span class="skill-tag">APIs</span>
-            <span class="skill-tag">CRM Integrations</span>
-            <span class="skill-tag">Data Migration</span>
-            <span class="skill-tag">Marketing Automation</span>
-            <span class="skill-tag">Business Process Automation</span>
-          </div>
-        </div>
-
-        <div class="tech-group">
-          <div class="tech-group-label">Web Operations</div>
-          <div>
-            <span class="skill-tag">Domain &amp; DNS Coordination</span>
-            <span class="skill-tag">Web Performance Optimization Basics</span>
-          </div>
         </div>
       </div>
-
+      <div class="sidebar-section">
+        <h3>Web Operations</h3>
+        <div>
+          <span class="skill-tag">Domain &amp; DNS Coordination</span>
+            <span class="skill-tag">Web Performance Optimization Basics</span>
+        </div>
+      </div>
       <div class="sidebar-section">
         <h3>Industry Experience</h3>
         <div>
-          <span class="industry-tag">Luxury Fashion &amp; Retail</span>
-          <span class="industry-tag">E-Commerce &amp; Marketplaces</span>
-          <span class="industry-tag">Real Estate / PropTech</span>
-          <span class="industry-tag">Digital Agencies</span>
-          <span class="industry-tag">SaaS &amp; Web Platforms</span>
+          <span class="skill-tag">Luxury Fashion &amp; Retail</span>
+          <span class="skill-tag">E-Commerce &amp; Marketplaces</span>
+          <span class="skill-tag">Real Estate / PropTech</span>
+          <span class="skill-tag">Digital Agencies</span>
+          <span class="skill-tag">SaaS &amp; Web Platforms</span>
         </div>
       </div>
-
-      <div class="sidebar-section">
-        <h3>Education</h3>
-        <div class="edu-block">
-          <strong>Master's Degree in Computer Science</strong>
-          National Aviation University<br>
-          <span class="edu-sub">Kyiv, Ukraine · 2018</span>
-          <span class="edu-note">Relevant academic areas: Systems Analysis, Mathematical Modelling, Databases, SQL, Statistics &amp; Probability, Algorithms, Object-Oriented Programming, Numerical Analysis and Mathematical Optimization.</span>
-        </div>
       </div>
+    </div>
 
-      <div class="sidebar-section">
-        <h3>Certifications</h3>
-        <div class="cert-item"><strong>AI Fluency Framework &amp; Foundations</strong>Anthropic · 2026<br><span style="font-size:0.76rem;color:#999;">AI Fluency · AI-Assisted Workflows · Claude</span></div>
-        <div class="cert-item"><strong>Artificial Intelligence Fundamentals</strong>IBM · 2026<br><span style="font-size:0.76rem;color:#999;">Artificial Intelligence · Artificial Neural Networks</span></div>
-        <div class="cert-item"><strong>Marketing Research &amp; Discovery</strong>Green Duck Research / 4Press · 2026<br><span style="font-size:0.76rem;color:#999;">Desk Research · JTBD · Job Stories · ICP Development · Customer Discovery · Qualitative &amp; Quantitative Research · In-Depth Interviews</span></div>
-        <div class="cert-item"><strong>Mailchimp Essential Training</strong>LinkedIn Learning · 2024<br><span style="font-size:0.76rem;color:#999;">Email Marketing · Mailchimp</span></div>
-        <div class="cert-item"><strong>Brand Management: Aligning Business, Brand and Behaviour</strong>London Business School · 2023<br><span style="font-size:0.76rem;color:#999;">Brand Management · Brand Marketing · Brand Identity · Corporate Branding</span></div>
-        <div class="cert-item"><strong>Entrepreneurship START</strong>UNIT School of Business · 2021<br><span style="font-size:0.76rem;color:#999;">Product Development · Market Research · Business Strategy · Design Thinking · Problem Solving · Pitching</span></div>
-        <div class="cert-item"><strong>Software Testing Essentials</strong>QA START UP · 2015<br><span style="font-size:0.76rem;color:#999;">Manual Testing · Quality Assurance · Software Testing Fundamentals</span></div>
-      </div>
-
-      <div class="sidebar-section">
-        <h3>Languages</h3>
-        <div class="lang-item"><span>English</span><span class="lang-level">Advanced</span></div>
-        <div class="lang-item"><span>Ukrainian</span><span class="lang-level">Fluent</span></div>
-        <div class="lang-item"><span>Russian</span><span class="lang-level">Fluent</span></div>
-      </div>
-
-    </aside>
-
-    <!-- MAIN -->
-    <main class="main">
-
-      <div class="section">
-        <h2>Profile</h2>
-        <div class="profile-text">
-          <p>Digital Project Manager with 10+ years of experience across digital delivery, e-commerce, web platforms, digital operations and marketing. Experienced in managing cross-functional initiatives from requirements and planning through execution, website testing, launch and reporting, while coordinating development, design, content, SEO, business stakeholders and external vendors.</p>
-          <p>Strong working knowledge of CMS and e-commerce platforms, CRM automation, integrations, reporting and process design across the UAE and international markets. Skilled at translating business requirements into structured delivery plans, building workflows from scratch and bringing clarity and ownership to complex digital initiatives.</p>
-        </div>
-      </div>
-
+    <!-- EXPERIENCE -->
+    <div class="content">
       <div class="section">
         <h2>Professional Experience</h2>
-
         <div class="job">
           <div class="job-header">
             <span class="job-title">Digital Project Manager</span>
@@ -967,7 +987,8 @@
             <li>Consolidated and migrated data from legacy systems and developed import/export automation processes supporting warehouse and e-commerce operations.</li>
             <li>Built customer communication and lifecycle workflows supporting engagement and retention.</li>
             <li>Coordinated website-related content production, photoshoots and ongoing technical support.</li>
-            <li>Supported website updates, testing and release validation across Shopify functionality and customer-facing journeys.</li>
+            <li>Managed Shopify customer-journey and checkout-related improvements, testing and release validation across customer-facing functionality.</li>
+          <li>Coordinated Stripe setup and payment configuration within Shopify, including testing and launch validation.</li>
             <li>Provided operational support across digital systems, hardware and software.</li>
           </ul>
         </div>
@@ -996,7 +1017,7 @@
           </div>
           <div class="job-company">Wezom · Kyiv, Ukraine</div>
           <ul class="job-bullets">
-            <li>Managed complex e-commerce projects for fashion and pet retail clients.</li>
+            <li>Managed complex e-commerce projects for fashion and pet retail clients, including continued technical delivery of the Sanahunt platform after previously working on the project from the e-commerce/business side.</li>
             <li>Gathered business requirements and translated them into structured technical requirements, project scope and delivery tasks for UI/UX and development teams.</li>
             <li>Coordinated UI/UX design and development processes from planning through delivery.</li>
             <li>Managed cross-functional collaboration, priorities, timelines and project communication.</li>
@@ -1074,13 +1095,13 @@
             <li>Analyzed project performance and implemented process improvements.</li>
           </ul>
         </div>
-
       </div>
+    </div>
 
+    <div class="content tail">
       <!-- TOOLS -->
       <div class="section">
         <h2>Tools &amp; Technologies</h2>
-
         <div class="tools-group">
           <div class="tools-group-label">Project Management</div>
           <div class="tools-grid">
@@ -1162,10 +1183,43 @@
             <span class="tool-tag">In-Depth Interviews</span>
           </div>
         </div>
+    </div>
 
+      <!-- EDUCATION -->
+      <div class="section">
+        <h2>Education</h2>
+        <div class="edu-light">
+          <strong>Master's Degree in Computer Science</strong>
+          <div class="edu-meta">National Aviation University · Kyiv, Ukraine · 2018</div>
+          <p>Relevant academic areas: Systems Analysis, Mathematical Modelling, Databases, SQL, Statistics &amp; Probability, Algorithms, Object-Oriented Programming, Numerical Analysis and Mathematical Optimization.</p>
+        </div>
       </div>
 
-    </main>
+      <!-- CERTIFICATIONS -->
+      <div class="section">
+        <h2>Certifications</h2>
+        <div class="cert-list">
+          <div class="cert-row"><strong>AI Fluency Framework &amp; Foundations</strong><span class="cert-org">Anthropic · 2026</span><span class="cert-topics">AI Fluency · AI-Assisted Workflows · Claude</span></div>
+          <div class="cert-row"><strong>Artificial Intelligence Fundamentals</strong><span class="cert-org">IBM · 2026</span><span class="cert-topics">Artificial Intelligence · Artificial Neural Networks</span></div>
+          <div class="cert-row"><strong>Marketing Research &amp; Discovery</strong><span class="cert-org">Green Duck Research / 4Press · 2026</span><span class="cert-topics">Desk Research · JTBD · Job Stories · ICP Development · Customer Discovery · Qualitative &amp; Quantitative Research · In-Depth Interviews</span></div>
+          <div class="cert-row"><strong>Mailchimp Essential Training</strong><span class="cert-org">LinkedIn Learning · 2024</span><span class="cert-topics">Email Marketing · Mailchimp</span></div>
+          <div class="cert-row"><strong>Brand Management: Aligning Business, Brand and Behaviour</strong><span class="cert-org">London Business School · 2023</span><span class="cert-topics">Brand Management · Brand Marketing · Brand Identity · Corporate Branding</span></div>
+          <div class="cert-row"><strong>Entrepreneurship START</strong><span class="cert-org">UNIT School of Business · 2021</span><span class="cert-topics">Product Development · Market Research · Business Strategy · Design Thinking · Problem Solving · Pitching</span></div>
+          <div class="cert-row"><strong>Software Testing Essentials</strong><span class="cert-org">QA START UP · 2015</span><span class="cert-topics">Manual Testing · Quality Assurance · Software Testing Fundamentals</span></div>
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="section">
+        <h2>Languages</h2>
+        <div class="lang-row">
+          <div class="lang-pill">English <span>Advanced</span></div>
+          <div class="lang-pill">Ukrainian <span>Fluent</span></div>
+          <div class="lang-pill">Russian <span>Fluent</span></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="footer">Polina Uspenska &nbsp;·&nbsp; Digital &amp; E-Commerce Project Manager &nbsp;·&nbsp; Dubai, UAE</div>
