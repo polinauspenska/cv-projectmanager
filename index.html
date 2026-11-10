@@ -329,7 +329,9 @@
   .sheet::after {              /* fold line at the spine */
     content: ''; position: absolute; top: 0; bottom: 0; right: 0; width: 26px;
     background: linear-gradient(to left, rgba(17,34,80,.10), rgba(17,34,80,0));
+    opacity: 0;
   }
+  .page-wrap.is-open .sheet::after { opacity: 1; }
   .page-wrap.is-open .sheet { transform: rotateY(-178deg); box-shadow: -30px 0 60px rgba(17,34,80,.22); }
   .page-wrap.is-open .sheet::before { animation: paperShade 1.9s ease forwards; }
   @keyframes paperShade { 0% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: 1; } }
@@ -340,12 +342,17 @@
     display: grid; place-items: center;
     position: fixed; inset: 0; z-index: 100;
     background: var(--ivory);
-    transform-origin: 100% 50%;
-    transition: transform 1.25s cubic-bezier(.55,.06,.28,1), box-shadow 1.25s ease;
+    transition: background-color .9s ease .1s;
   }
   .is-loading body { overflow: hidden; }
-  #preloader.done { transform: perspective(2400px) rotateY(-178deg); box-shadow: -40px 0 80px rgba(17,34,80,.25); }
+  #preloader.fly { background-color: rgba(245,244,240,0); pointer-events: none; }
   #preloader.gone { display: none; }
+  .pl-mark { transform-origin: 0 0; transition: transform 1s cubic-bezier(.65,0,.25,1); will-change: transform; }
+  .pl-mark path { transition: fill .9s ease .1s; }
+  #preloader.fly .pl-mark path { fill: var(--champagne); }
+  #preloader.fly .pl-name { opacity: 0 !important; transition: opacity .3s ease; animation: none; }
+  /* the real header logo waits invisibly until the flying one lands on it */
+  .is-loading .mark .pu, .is-loading .top-pu .pu { opacity: 0; }
   .pl-inner { text-align: center; }
   .pl-mark { width: min(260px, 58vw); height: auto; display: block; margin: 0 auto; overflow: visible; }
   .pl-mark path {
@@ -798,12 +805,22 @@
     if (pre && html.classList.contains('is-loading')) {
       var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var start = Date.now(), minShow = still ? 500 : 2300, finished = false;
+      var land = function () {
+        html.classList.remove('is-loading');
+        pre.classList.add('gone');
+      };
       var finish = function () {
         if (finished) return; finished = true;
         try { sessionStorage.setItem('pu-intro', '1'); } catch (e) {}
-        pre.classList.add('done');
-        setTimeout(function () { html.classList.remove('is-loading'); }, still ? 0 : 380);
-        setTimeout(function () { pre.classList.add('gone'); }, still ? 0 : 1300);
+        var mark = pre.querySelector('.pl-mark');
+        var targets = document.querySelectorAll('.mark .pu, .top-pu .pu'), target = null;
+        targets.forEach(function (t) { var r = t.getBoundingClientRect(); if (!target && r.width > 0 && r.bottom > 0) target = t; });
+        if (still || !target || !mark) { land(); return; }
+        var a = mark.getBoundingClientRect(), b = target.getBoundingClientRect();
+        var k = b.width / a.width;
+        pre.classList.add('fly');
+        mark.style.transform = 'translate(' + (b.left - a.left) + 'px,' + (b.top - a.top) + 'px) scale(' + k + ')';
+        setTimeout(land, 1050);
       };
       var whenLoaded = function () { setTimeout(finish, Math.max(0, minShow - (Date.now() - start))); };
       if (document.readyState === 'complete') whenLoaded(); else window.addEventListener('load', whenLoaded);
