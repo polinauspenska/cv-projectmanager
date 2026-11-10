@@ -837,22 +837,61 @@
     document.querySelectorAll('.nav a, .mark').forEach(function (a) { a.addEventListener('click', closeMenu); });
 
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var po = null;
+    function arm(w) {                       // cover a section with a fresh, unturned sheet
+      var old = w.querySelector('.sheet'); if (old) old.remove();
+      clearTimeout(w._pu);
+      w.classList.remove('is-open');
+      var sh = document.createElement('div');
+      sh.className = 'sheet'; sh.setAttribute('aria-hidden', 'true');
+      w.appendChild(sh);
+      void sh.offsetWidth;                  // commit the closed state before turning
+    }
+    function turn(w) {                      // turn the sheet away
+      w.classList.add('is-open');
+      clearTimeout(w._pu);
+      w._pu = setTimeout(function () { var sh = w.querySelector('.sheet'); if (sh) sh.remove(); }, 2100);
+    }
+    function whenScrollSettles(cb) {        // works with smooth scrolling in every browser
+      var last = -1, still = 0, frames = 0;
+      (function tick() {
+        var y = window.scrollY;
+        still = (y === last) ? still + 1 : 0; last = y; frames++;
+        if (still >= 6 || frames > 150) cb(); else requestAnimationFrame(tick);
+      })();
+    }
+    function replayHero() {
+      document.querySelectorAll('.hello h1 span b, .hello p, .role').forEach(function (el) {
+        el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
+      });
+    }
+
     if ('IntersectionObserver' in window && !reduce) {
       var wraps = document.querySelectorAll('.page-wrap');
-      wraps.forEach(function (w) {
-        var sh = document.createElement('div');
-        sh.className = 'sheet'; sh.setAttribute('aria-hidden', 'true');
-        w.appendChild(sh);
-      });
-      var po = new IntersectionObserver(function (entries) {
+      wraps.forEach(arm);
+      po = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
-          var w = e.target;
-          w.classList.add('is-open'); po.unobserve(w);
-          setTimeout(function () { var sh = w.querySelector('.sheet'); if (sh) sh.remove(); }, 2100);
+          po.unobserve(e.target); turn(e.target);
         });
       }, { rootMargin: '0px 0px -25% 0px', threshold: 0 });
       wraps.forEach(function (w) { po.observe(w); });
+
+      // menu and logo links replay the animation of the section they lead to
+      document.querySelectorAll('.nav a, .mark, .top-pu').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var id = (a.getAttribute('href') || '').slice(1);
+          var el = document.getElementById(id);
+          if (!el) return;
+          if (el.classList.contains('page-wrap')) {
+            if (po) po.unobserve(el);
+            arm(el);
+            setTimeout(function () { whenScrollSettles(function () { turn(el); }); }, 60);
+          } else if (id === 'home') {
+            setTimeout(function () { whenScrollSettles(replayHero); }, 60);
+          }
+        });
+      });
     }
 
     var links = {};
