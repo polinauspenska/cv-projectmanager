@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Polina Uspenska — Digital &amp; E-Commerce Project Manager</title>
+<meta name="description" content="Polina Uspenska, Digital &amp; E-Commerce Project Manager in Dubai with 10+ years in digital delivery, e-commerce, web platforms and operations." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('pu-theme'); } catch (e) {}
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #112250;
+    --navy-deep: #0b1738;
+    --sapphire: #3B507D;
+    --taupe: #BEB7A7;
+    --champagne: #E7E2CE;
+    --ivory: #F5F4F0;
+
+    --bg: var(--ivory);
+    --bg-alt: var(--champagne);
+    --ink: var(--navy);
+    --ink-soft: #3d4a6b;
+    --muted: #6b7591;
+    --rule: rgba(17, 34, 80, 0.14);
+    --accent: var(--sapphire);
+    --side-bg: var(--navy);
+    --btn-ink: var(--navy);
+
+    --display: 'Didot', 'GFS Didot', 'Bodoni 72', 'Times New Roman', serif;
+    --sans: 'Neue Montreal', 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --side-w: 260px;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: var(--navy);
+      --bg-alt: #0e1d46;
+      --ink: var(--ivory);
+      --ink-soft: #d9d6cc;
+      --muted: var(--taupe);
+      --rule: rgba(231, 226, 206, 0.16);
+      --accent: var(--champagne);
+      --side-bg: var(--navy-deep);
+      --btn-ink: var(--champagne);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: var(--navy);
+    --bg-alt: #0e1d46;
+    --ink: var(--ivory);
+    --ink-soft: #d9d6cc;
+    --muted: var(--taupe);
+    --rule: rgba(231, 226, 206, 0.16);
+    --accent: var(--champagne);
+    --side-bg: var(--navy-deep);
+    --btn-ink: var(--champagne);
+    color-scheme: dark;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .4s ease, color .4s ease;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ───────── SIDEBAR ───────── */
+  .side {
+    position: fixed; inset: 0 auto 0 0;
+    width: var(--side-w);
+    background: var(--side-bg);
+    color: var(--ivory);
+    display: flex; flex-direction: column;
+    padding: 40px 36px 28px;
+    z-index: 20;
+    transition: background-color .4s ease;
+  }
+  .mark {
+    display: block;
+    text-decoration: none;
+    color: var(--champagne);
+    padding: 0 0 24px;
+    border-bottom: 1px solid rgba(231,226,206,.22);
+    transition: color .3s ease;
+  }
+  .mark:hover { color: var(--ivory); }
+  .mark .pu { display: block; width: 164px; height: auto; margin-left: -4px; }
+  .nav { list-style: none; margin-top: 26px; }
+  .nav a {
+    display: block;
+    text-decoration: none;
+    font-size: 12.5px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(231,226,206,.12);
+    color: rgba(245,244,240,.78);
+    transition: color .25s ease, padding-left .3s var(--ease);
+  }
+  .nav a:hover { color: var(--ivory); padding-left: 6px; }
+  .nav a.is-active { color: var(--champagne); }
+  .nav a.is-active::before {
+    content: ''; display: inline-block; width: 14px; height: 1px;
+    background: var(--champagne); vertical-align: middle; margin-right: 10px;
+  }
+  .side-links { display: flex; align-items: center; gap: 18px; margin-top: 32px; }
+  .li-icon { display: inline-flex; color: rgba(255,255,255,.5); transition: color .25s ease; }
+  .li-icon svg { width: 26px; height: 26px; fill: currentColor; }
+  .li-icon:hover { color: rgba(255,255,255,.95); }
+  .cv-btn {
+    display: inline-block;
+    border: 1px solid rgba(245,244,240,.45);
+    color: rgba(245,244,240,.85);
+    text-decoration: none;
+    font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+    padding: 8px 14px;
+    transition: border-color .25s ease, color .25s ease, background-color .25s ease;
+  }
+  .cv-btn:hover { border-color: var(--champagne); color: var(--navy); background: var(--champagne); }
+  .side-foot { margin-top: auto; display: flex; flex-direction: column; gap: 14px; }
+  .theme-btn {
+    align-self: flex-start;
+    background: none; border: 1px solid rgba(231,226,206,.3);
+    color: rgba(245,244,240,.8);
+    font: inherit; font-size: 12px; letter-spacing: .08em;
+    padding: 7px 14px; border-radius: 20px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color .25s, color .25s;
+  }
+  .theme-btn:hover { border-color: var(--champagne); color: var(--champagne); }
+  .theme-btn i {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: linear-gradient(90deg, var(--ivory) 50%, var(--sapphire) 50%);
+    border: 1px solid var(--champagne);
+  }
+  .copy { font-size: 11px; color: rgba(245,244,240,.4); letter-spacing: .06em; }
+
+  .topbar { display: none; }
+
+  /* ───────── MAIN ───────── */
+  main { margin-left: var(--side-w); }
+
+  /* HERO */
+  .hero { display: block; }
+  .portrait {
+    position: relative;
+    overflow: hidden;
+    background: #e98a90;
+    height: 100vh;
+    min-height: 620px;
+  }
+  .portrait picture, .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .portrait img {
+    object-fit: cover; object-position: 78% 62%;
+    animation: settle 1.8s var(--ease) both;
+  }
+  .hello {
+    position: absolute; left: 7%; bottom: 13%;
+    max-width: 52%;
+    z-index: 2; color: var(--navy);
+  }
+  .hello p {
+    font-size: 16px; letter-spacing: .04em; color: var(--navy);
+    margin-bottom: 14px;
+    animation: rise 1s var(--ease) .5s both;
+  }
+  .hello h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(60px, 8.6vw, 150px);
+    line-height: .88;
+    letter-spacing: -.012em;
+    color: var(--navy);
+  }
+  .hello h1 span { display: block; overflow: hidden; }
+  .hello h1 span b { display: block; font-weight: 400; animation: up 1.1s var(--ease) both; }
+  .hello h1 span:nth-child(1) b { animation-delay: .25s; }
+  .hello h1 span:nth-child(2) b { animation-delay: .4s; }
+  .role {
+    margin-top: 26px; padding: 14px 0;
+    border-top: 1px solid rgba(17,34,80,.35);
+    border-bottom: 1px solid rgba(17,34,80,.35);
+    font-size: 12.5px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--navy);
+    max-width: 460px;
+    animation: rise 1s var(--ease) .7s both;
+  }
+
+  @keyframes settle { from { transform: scale(1.07); } to { transform: scale(1); } }
+  @keyframes up { from { transform: translateY(105%); } to { transform: translateY(0); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 72px; align-items: start; }
+  .about-grid .btn { display: inline-block; }
+  .about-grid > div:last-child { padding-top: calc(clamp(44px, 4.6vw, 72px) + 65px); }
+
+  /* headings shared */
+  .h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(44px, 4.6vw, 72px);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--ink);
+    letter-spacing: -.005em;
+  }
+  .bar { width: 72px; height: 3px; background: var(--taupe); margin: 22px 0 40px; }
+  .h3 {
+    font-size: 13px; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--ink);
+  }
+
+  .facts { list-style: none; border-top: 1px solid var(--rule); }
+  .facts li {
+    display: grid; grid-template-columns: 120px 1fr; gap: 16px;
+    padding: 13px 0; border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+  }
+  .facts span { color: var(--muted); }
+  .facts a, .facts b { color: var(--ink); font-weight: 400; text-decoration: none; }
+  .facts a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .about .h3 { margin: 0 0 14px; }
+  .about p.lead { max-width: 60ch; font-size: 16px; }
+  .about .facts { margin-top: 0; }
+
+  .btn {
+    display: inline-block; align-self: flex-start;
+    margin-top: 34px;
+    border: 2px solid var(--taupe);
+    color: var(--btn-ink);
+    text-decoration: none;
+    font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+    padding: 15px 26px;
+    position: relative; overflow: hidden; z-index: 0;
+    transition: color .35s ease, border-color .35s ease;
+  }
+  .btn::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: var(--navy);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .45s var(--ease);
+  }
+  .btn:hover { color: var(--ivory); border-color: var(--navy); }
+  .btn:hover::before { transform: scaleX(1); }
+
+  /* SECTIONS */
+  .sec { padding: 120px 9% 120px 8%; transition: background-color .4s ease; }
+  .sec.alt { background: var(--bg-alt); }
+  .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 60px; align-items: end; margin-bottom: 56px; }
+  .sec-head .bar { margin-bottom: 0; }
+  .sec-head p { max-width: 60ch; padding-bottom: 4px; }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 64px; }
+  .sk { padding: 22px 0; border-top: 1px solid var(--rule); }
+  .sk h3 { margin-bottom: 10px; }
+  .sk ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; }
+  .sk li { font-size: 15px; color: var(--ink-soft); }
+  .sk li:not(:last-child)::after { content: '/'; color: var(--taupe); margin: 0 10px; }
+
+  /* experience */
+  .timeline { position: relative; }
+  .job {
+    display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 48px;
+    padding: 40px 0; border-top: 1px solid var(--rule);
+  }
+  .job:last-child { border-bottom: 1px solid var(--rule); }
+  .yr {
+    font-family: var(--display);
+    font-size: 64px; line-height: .9; color: var(--ink);
+    display: block;
+  }
+  .range { display: block; margin-top: 12px; font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+  .job h3 {
+    font-family: var(--display); font-weight: 400;
+    font-size: 30px; line-height: 1.15; color: var(--ink);
+  }
+  .org { margin: 6px 0 16px; color: var(--accent); font-size: 15px; font-weight: 500; }
+  .job ul { list-style: none; max-width: 76ch; }
+  .job li { position: relative; padding-left: 22px; margin: 7px 0; font-size: 15.5px; }
+  .job li::before {
+    content: ''; position: absolute; left: 0; top: .78em;
+    width: 10px; height: 1px; background: var(--taupe);
+  }
+
+  /* tools */
+  .tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 64px; }
+
+  /* education */
+  .edu { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 60px; }
+  .degree h3 { font-family: var(--display); font-weight: 400; font-size: 34px; line-height: 1.12; color: var(--ink); }
+  .degree .org { margin-bottom: 14px; }
+  .degree p { font-size: 15px; max-width: 52ch; }
+  .langs { margin-top: 44px; }
+  .langs .h3 { margin-bottom: 14px; }
+  .langs ul { list-style: none; border-top: 1px solid var(--rule); }
+  .langs li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 15px; color: var(--ink); }
+  .langs li span { color: var(--muted); }
+  .certs { list-style: none; }
+  .certs li { padding: 18px 0; border-top: 1px solid var(--rule); }
+  .certs li:last-child { border-bottom: 1px solid var(--rule); }
+  .certs .top { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; }
+  .certs strong { color: var(--ink); font-weight: 500; font-size: 16px; }
+  .certs em { font-style: normal; font-size: 13px; color: var(--accent); white-space: nowrap; font-weight: 500; }
+  .certs p { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+
+  /* contact */
+  .contact { background: var(--navy); color: var(--ivory); }
+  :root[data-theme="dark"] .contact { background: var(--navy-deep); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .contact { background: var(--navy-deep); } }
+  .contact .h2 { color: var(--ivory); }
+  .contact .bar { background: var(--champagne); }
+  .mail {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: clamp(30px, 4.4vw, 64px);
+    line-height: 1.1;
+    color: var(--ivory);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(231,226,206,.35);
+    padding-bottom: 6px;
+    word-break: break-word;
+    transition: border-color .3s, color .3s;
+  }
+  .mail:hover { color: var(--champagne); border-color: var(--champagne); }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 14px 48px; margin-top: 44px; font-size: 15px; color: rgba(245,244,240,.75); }
+  .contact-row a { color: var(--ivory); text-decoration: none; border-bottom: 1px solid rgba(231,226,206,.3); }
+  .contact-row a:hover { color: var(--champagne); }
+  .contact-row span { display: block; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--taupe); margin-bottom: 6px; }
+  .contact .btn { color: var(--champagne); border-color: var(--champagne); margin-top: 56px; }
+  .contact .btn::before { background: var(--champagne); }
+  .contact .btn:hover { color: var(--navy); }
+
+  /* ───────── RESPONSIVE ───────── */
+  @media (max-width: 1180px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid > div:last-child { padding-top: 0; }
+    .hello { max-width: 50%; left: 6%; }
+    .hello h1 { font-size: clamp(56px, 7.2vw, 110px); }
+    .role { font-size: 11.5px; letter-spacing: .2em; }
+    .portrait img { object-position: 92% 62%; }
+    .sec-head, .edu { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 900px) {
+    :root { --side-w: 0px; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      position: fixed; inset: 0 0 auto 0; height: 60px; z-index: 30;
+      background: var(--navy); color: var(--ivory); padding: 0 16px;
+    }
+    .top-pu { display: inline-flex; color: var(--champagne); text-decoration: none; }
+    .top-pu .pu { width: 64px; height: auto; display: block; }
+    .menu-btn {
+      background: none; border: 1px solid rgba(231,226,206,.35); color: var(--ivory);
+      font: inherit; font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+      padding: 8px 14px; cursor: pointer;
+    }
+    .side {
+      width: min(300px, 82vw);
+      transform: translateX(-100%);
+      transition: transform .45s var(--ease), background-color .4s ease;
+      padding-top: 84px;
+      z-index: 25;
+    }
+    body.menu-open .side { transform: none; box-shadow: 30px 0 60px rgba(0,0,0,.25); }
+    .mark { display: none; }
+    .nav { margin-top: 0; }
+    main { padding-top: 60px; }
+    .portrait { height: auto; min-height: 0; background: transparent; }
+    .portrait img { object-position: 50% 30%; }
+    .hero { background: var(--bg); }
+    .hello { position: static; max-width: none; padding: 40px 16px 8px; color: var(--ink); }
+    .hello p { color: var(--muted); }
+    .hello h1 { color: var(--ink); font-size: clamp(52px, 15vw, 76px); }
+    .role { letter-spacing: .18em; font-size: 11.5px; color: var(--ink); border-color: var(--rule); }
+    .portrait { overflow: visible; display: flex; flex-direction: column; }
+    .portrait picture { position: relative; display: block; aspect-ratio: 4 / 5; background: #ec8c93; overflow: hidden; }
+    .portrait picture img { position: absolute; }
+    .facts li { grid-template-columns: 96px 1fr; font-size: 14.5px; }
+    .sec { padding: 80px 16px; }
+    .skills, .tools { grid-template-columns: 1fr; }
+    .job { grid-template-columns: 1fr; gap: 14px; padding: 32px 0; }
+    .yr { font-size: 48px; }
+    .range { display: inline; margin-left: 12px; }
+    .job h3 { font-size: 26px; }
+    .certs .top { flex-direction: column; gap: 2px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+  @media print {
+    .side, .topbar, .btn, .theme-btn { display: none !important; }
+    main { margin-left: 0; padding-top: 0; }
+    .hero { min-height: auto; }
+    .job, .certs li { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="top-pu" href="#home" aria-label="Polina Uspenska, back to top"><svg class="pu" viewBox="-6 -871 1791 961" aria-hidden="true"><path fill="currentColor" d="M169 39Q147 39 126 36Q63 28 33.5 -1.0Q4 -30 4 -64Q4 -101 37.5 -131.0Q71 -161 132 -161Q151 -161 172.5 -157.5Q194 -154 218 -146Q230 -142 230 -135Q230 -131 224 -131Q218 -131 214 -133Q198 -139 183.5 -141.5Q169 -144 156 -144Q113 -144 90.5 -119.5Q68 -95 68 -66Q68 -38 91.0 -15.0Q114 8 164 8Q227 8 280.5 -21.0Q334 -50 382 -97Q433 -147 475.0 -217.5Q517 -288 558.5 -368.5Q600 -449 649.0 -531.0Q698 -613 762 -685Q775 -699 788.5 -714.5Q802 -730 815 -741Q781 -746 745.0 -748.5Q709 -751 674 -751Q622 -751 575.5 -746.5Q529 -742 483 -734Q436 -725 378.0 -706.0Q320 -687 265.5 -656.5Q211 -626 172.5 -583.0Q134 -540 125 -484Q124 -479 123.5 -473.5Q123 -468 123 -463Q123 -417 154.5 -387.0Q186 -357 228 -357Q259 -357 288.0 -373.5Q317 -390 340.0 -417.5Q363 -445 374 -478Q375 -488 382 -488Q388 -488 388 -477Q387 -433 362.5 -401.0Q338 -369 301.0 -352.5Q264 -336 226 -336Q187 -336 152.0 -352.5Q117 -369 95.0 -401.5Q73 -434 73 -482Q73 -538 100.5 -581.0Q128 -624 174.0 -656.5Q220 -689 274.0 -711.5Q328 -734 382.0 -747.5Q436 -761 480 -768Q525 -775 573.5 -779.0Q622 -783 672 -783Q715 -783 758.0 -779.0Q801 -775 842 -767Q859 -780 877.0 -790.0Q895 -800 917 -808Q931 -814 938 -814Q944 -814 944 -810Q944 -803 928 -793Q920 -789 908.0 -779.0Q896 -769 882 -756Q947 -740 999 -708Q1056 -674 1080.5 -636.0Q1105 -598 1105 -558Q1105 -512 1077.0 -466.5Q1049 -421 1004.0 -382.0Q959 -343 905.0 -314.5Q851 -286 798 -273Q747 -260 695.0 -254.0Q643 -248 602 -248Q595 -248 587.5 -248.0Q580 -248 573 -249Q539 -201 503.0 -155.5Q467 -110 422 -67Q367 -15 302.0 12.0Q237 39 169 39ZM587 -271Q625 -270 672.0 -277.0Q719 -284 766 -298Q844 -322 906.5 -367.0Q969 -412 1005.5 -467.0Q1042 -522 1042 -575Q1042 -607 1026.5 -636.0Q1011 -665 976 -688Q953 -703 924.0 -714.0Q895 -725 863 -732Q812 -660 767.5 -582.0Q723 -504 679.5 -425.0Q636 -346 587 -271ZM1667.0 79Q1639.0 74 1623.0 53.5Q1607.0 33 1600.5 2.5Q1594.0 -28 1594.0 -61Q1594.0 -95 1598.5 -128.0Q1603.0 -161 1608.0 -186Q1593.0 -162 1579.5 -142.5Q1566.0 -123 1546.0 -97Q1492.0 -28 1439.5 5.5Q1387.0 39 1343.0 39Q1302.0 39 1275.0 8.5Q1248.0 -22 1248.0 -80Q1248.0 -122 1263.0 -173.5Q1278.0 -225 1300.5 -281.0Q1323.0 -337 1348.5 -392.5Q1374.0 -448 1395.0 -499.0Q1416.0 -550 1427.0 -592Q1435.0 -623 1439.5 -652.5Q1444.0 -682 1444.0 -710Q1444.0 -745 1435.0 -770.5Q1426.0 -796 1406.0 -808Q1384.0 -822 1357.0 -828.0Q1330.0 -834 1301.0 -834Q1246.0 -834 1186.5 -815.0Q1127.0 -796 1070.0 -763Q976.0 -708 917.0 -640.0Q858.0 -572 830.5 -501.5Q803.0 -431 803.0 -368Q803.0 -312 823.0 -267.0Q843.0 -222 880.0 -196.0Q917.0 -170 967.0 -170Q1005.0 -170 1046.0 -186Q1078.0 -198 1106.0 -224.0Q1134.0 -250 1155.5 -283.0Q1177.0 -316 1189.5 -351.0Q1202.0 -386 1202.0 -416Q1202.0 -447 1186.0 -467.0Q1170.0 -487 1133.0 -487Q1125.0 -487 1116.0 -486.0Q1107.0 -485 1097.0 -483Q1090.0 -482 1084.5 -480.5Q1079.0 -479 1076.0 -479Q1071.0 -479 1071.0 -482Q1071.0 -486 1080.0 -492.5Q1089.0 -499 1093.0 -500Q1111.0 -508 1126.5 -511.0Q1142.0 -514 1155.0 -514Q1194.0 -514 1212.5 -488.0Q1231.0 -462 1231.0 -422Q1231.0 -379 1210.0 -328.5Q1189.0 -278 1147.5 -234.0Q1106.0 -190 1045.0 -164Q996.0 -143 950.0 -143Q894.0 -143 851.0 -172.5Q808.0 -202 784.5 -253.0Q761.0 -304 761.0 -367Q761.0 -438 793.5 -514.5Q826.0 -591 894.5 -663.5Q963.0 -736 1072.0 -796Q1132.0 -829 1188.5 -845.0Q1245.0 -861 1295.0 -861Q1322.0 -861 1349.5 -856.0Q1377.0 -851 1401.0 -840Q1454.0 -818 1475.5 -774.0Q1497.0 -730 1497.0 -677Q1497.0 -636 1486.0 -587Q1476.0 -541 1454.5 -489.0Q1433.0 -437 1407.5 -382.0Q1382.0 -327 1358.5 -272.0Q1335.0 -217 1320.0 -166.0Q1305.0 -115 1305.0 -71Q1305.0 -30 1320.5 -8.5Q1336.0 13 1361.0 13Q1393.0 13 1437.5 -21.0Q1482.0 -55 1531.0 -125Q1565.0 -174 1595.5 -232.0Q1626.0 -290 1652.5 -344.5Q1679.0 -399 1700.0 -438Q1717.0 -467 1730.5 -479.0Q1744.0 -491 1757.0 -491Q1767.0 -491 1771.0 -481.0Q1775.0 -471 1775.0 -461Q1775.0 -445 1765.5 -424.0Q1756.0 -403 1743.0 -380.5Q1730.0 -358 1720.0 -335Q1710.0 -314 1692.0 -269.5Q1674.0 -225 1660.0 -173Q1650.0 -133 1642.5 -92.0Q1635.0 -51 1635.0 -18Q1635.0 15 1643.5 35.5Q1652.0 56 1671.0 56H1682.0Q1701.0 56 1701.0 64Q1701.0 70 1691.0 75.5Q1681.0 81 1667.0 79Z"/></svg></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="side">Menu</button>
+</header>
+
+<aside class="side" id="side">
+  <a class="mark" href="#home" aria-label="Polina Uspenska, back to top">
+<svg class="pu" viewBox="-6 -871 1791 961" role="img" aria-label="PU monogram"><path fill="currentColor" d="M169 39Q147 39 126 36Q63 28 33.5 -1.0Q4 -30 4 -64Q4 -101 37.5 -131.0Q71 -161 132 -161Q151 -161 172.5 -157.5Q194 -154 218 -146Q230 -142 230 -135Q230 -131 224 -131Q218 -131 214 -133Q198 -139 183.5 -141.5Q169 -144 156 -144Q113 -144 90.5 -119.5Q68 -95 68 -66Q68 -38 91.0 -15.0Q114 8 164 8Q227 8 280.5 -21.0Q334 -50 382 -97Q433 -147 475.0 -217.5Q517 -288 558.5 -368.5Q600 -449 649.0 -531.0Q698 -613 762 -685Q775 -699 788.5 -714.5Q802 -730 815 -741Q781 -746 745.0 -748.5Q709 -751 674 -751Q622 -751 575.5 -746.5Q529 -742 483 -734Q436 -725 378.0 -706.0Q320 -687 265.5 -656.5Q211 -626 172.5 -583.0Q134 -540 125 -484Q124 -479 123.5 -473.5Q123 -468 123 -463Q123 -417 154.5 -387.0Q186 -357 228 -357Q259 -357 288.0 -373.5Q317 -390 340.0 -417.5Q363 -445 374 -478Q375 -488 382 -488Q388 -488 388 -477Q387 -433 362.5 -401.0Q338 -369 301.0 -352.5Q264 -336 226 -336Q187 -336 152.0 -352.5Q117 -369 95.0 -401.5Q73 -434 73 -482Q73 -538 100.5 -581.0Q128 -624 174.0 -656.5Q220 -689 274.0 -711.5Q328 -734 382.0 -747.5Q436 -761 480 -768Q525 -775 573.5 -779.0Q622 -783 672 -783Q715 -783 758.0 -779.0Q801 -775 842 -767Q859 -780 877.0 -790.0Q895 -800 917 -808Q931 -814 938 -814Q944 -814 944 -810Q944 -803 928 -793Q920 -789 908.0 -779.0Q896 -769 882 -756Q947 -740 999 -708Q1056 -674 1080.5 -636.0Q1105 -598 1105 -558Q1105 -512 1077.0 -466.5Q1049 -421 1004.0 -382.0Q959 -343 905.0 -314.5Q851 -286 798 -273Q747 -260 695.0 -254.0Q643 -248 602 -248Q595 -248 587.5 -248.0Q580 -248 573 -249Q539 -201 503.0 -155.5Q467 -110 422 -67Q367 -15 302.0 12.0Q237 39 169 39ZM587 -271Q625 -270 672.0 -277.0Q719 -284 766 -298Q844 -322 906.5 -367.0Q969 -412 1005.5 -467.0Q1042 -522 1042 -575Q1042 -607 1026.5 -636.0Q1011 -665 976 -688Q953 -703 924.0 -714.0Q895 -725 863 -732Q812 -660 767.5 -582.0Q723 -504 679.5 -425.0Q636 -346 587 -271ZM1667.0 79Q1639.0 74 1623.0 53.5Q1607.0 33 1600.5 2.5Q1594.0 -28 1594.0 -61Q1594.0 -95 1598.5 -128.0Q1603.0 -161 1608.0 -186Q1593.0 -162 1579.5 -142.5Q1566.0 -123 1546.0 -97Q1492.0 -28 1439.5 5.5Q1387.0 39 1343.0 39Q1302.0 39 1275.0 8.5Q1248.0 -22 1248.0 -80Q1248.0 -122 1263.0 -173.5Q1278.0 -225 1300.5 -281.0Q1323.0 -337 1348.5 -392.5Q1374.0 -448 1395.0 -499.0Q1416.0 -550 1427.0 -592Q1435.0 -623 1439.5 -652.5Q1444.0 -682 1444.0 -710Q1444.0 -745 1435.0 -770.5Q1426.0 -796 1406.0 -808Q1384.0 -822 1357.0 -828.0Q1330.0 -834 1301.0 -834Q1246.0 -834 1186.5 -815.0Q1127.0 -796 1070.0 -763Q976.0 -708 917.0 -640.0Q858.0 -572 830.5 -501.5Q803.0 -431 803.0 -368Q803.0 -312 823.0 -267.0Q843.0 -222 880.0 -196.0Q917.0 -170 967.0 -170Q1005.0 -170 1046.0 -186Q1078.0 -198 1106.0 -224.0Q1134.0 -250 1155.5 -283.0Q1177.0 -316 1189.5 -351.0Q1202.0 -386 1202.0 -416Q1202.0 -447 1186.0 -467.0Q1170.0 -487 1133.0 -487Q1125.0 -487 1116.0 -486.0Q1107.0 -485 1097.0 -483Q1090.0 -482 1084.5 -480.5Q1079.0 -479 1076.0 -479Q1071.0 -479 1071.0 -482Q1071.0 -486 1080.0 -492.5Q1089.0 -499 1093.0 -500Q1111.0 -508 1126.5 -511.0Q1142.0 -514 1155.0 -514Q1194.0 -514 1212.5 -488.0Q1231.0 -462 1231.0 -422Q1231.0 -379 1210.0 -328.5Q1189.0 -278 1147.5 -234.0Q1106.0 -190 1045.0 -164Q996.0 -143 950.0 -143Q894.0 -143 851.0 -172.5Q808.0 -202 784.5 -253.0Q761.0 -304 761.0 -367Q761.0 -438 793.5 -514.5Q826.0 -591 894.5 -663.5Q963.0 -736 1072.0 -796Q1132.0 -829 1188.5 -845.0Q1245.0 -861 1295.0 -861Q1322.0 -861 1349.5 -856.0Q1377.0 -851 1401.0 -840Q1454.0 -818 1475.5 -774.0Q1497.0 -730 1497.0 -677Q1497.0 -636 1486.0 -587Q1476.0 -541 1454.5 -489.0Q1433.0 -437 1407.5 -382.0Q1382.0 -327 1358.5 -272.0Q1335.0 -217 1320.0 -166.0Q1305.0 -115 1305.0 -71Q1305.0 -30 1320.5 -8.5Q1336.0 13 1361.0 13Q1393.0 13 1437.5 -21.0Q1482.0 -55 1531.0 -125Q1565.0 -174 1595.5 -232.0Q1626.0 -290 1652.5 -344.5Q1679.0 -399 1700.0 -438Q1717.0 -467 1730.5 -479.0Q1744.0 -491 1757.0 -491Q1767.0 -491 1771.0 -481.0Q1775.0 -471 1775.0 -461Q1775.0 -445 1765.5 -424.0Q1756.0 -403 1743.0 -380.5Q1730.0 -358 1720.0 -335Q1710.0 -314 1692.0 -269.5Q1674.0 -225 1660.0 -173Q1650.0 -133 1642.5 -92.0Q1635.0 -51 1635.0 -18Q1635.0 15 1643.5 35.5Q1652.0 56 1671.0 56H1682.0Q1701.0 56 1701.0 64Q1701.0 70 1691.0 75.5Q1681.0 81 1667.0 79Z"/></svg>
+  </a>
+  <nav aria-label="Sections">
+    <ul class="nav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="side-links">
+    <a class="li-icon" href="https://www.linkedin.com/in/polina-uspenska/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    </a>
+    <a class="cv-btn" href="../Polina_Uspenska_CV.pdf" download>CV in PDF</a>
+  </div>
+  <div class="side-foot">
+    <button class="theme-btn" type="button"><i aria-hidden="true"></i><span>Dark mode</span></button>
+    <p class="copy">© Polina Uspenska, Dubai</p>
+  </div>
+</aside>
+
+<main>
+  <section class="hero" id="home">
+    <div class="portrait">
+      <picture>
+        <source media="(max-width: 900px)" srcset="hero-portrait.jpg">
+        <img src="hero.jpg" alt="Polina Uspenska sitting on a white cube against a pink studio backdrop" />
+      </picture>
+      <div class="hello">
+        <p>Hello, I'm</p>
+        <h1><span><b>Polina</b></span><span><b>Uspenska</b></span></h1>
+        <div class="role">Digital &amp; E-Commerce Project Manager</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec about" id="about">
+    <div class="about-grid">
+      <div>
+        <h2 class="h2">About</h2>
+        <div class="bar"></div>
+        <ul class="facts">
+        <li><span>Name</span><b>Polina Uspenska</b></li>
+        <li><span>Based in</span><b>Dubai, UAE</b></li>
+        <li><span>Email</span><a href="mailto:polya.uspenskaya@gmail.com">polya.uspenskaya@gmail.com</a></li>
+        <li><span>Phone</span><a href="tel:+971588248074">+971 58 824 80 74</a></li>
+        <li><span>Experience</span><b>10+ years in marketing, operations &amp; web delivery</b></li>
+        <li><span>Languages</span><b>English, Ukrainian, Russian</b></li>
+      </ul>
+      </div>
+      <div>
+        <h3 class="h3">Professional profile</h3>
+        <p class="lead">Digital &amp; E-Commerce Project Manager with 10+ years of experience across digital delivery, e-commerce, web platforms, digital operations and marketing. Experienced in managing cross-functional initiatives from requirements and planning through execution, website testing, launch and reporting, while coordinating development, design, content, SEO, business stakeholders and external vendors.</p>
+        <a class="btn" href="../Polina_Uspenska_CV.pdf" download>Download CV as PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="skills">
+    <div class="sec-head">
+      <div><h2 class="h2">Skills</h2><div class="bar"></div></div>
+      <p>Strong working knowledge of CMS and e-commerce platforms, CRM automation, integrations, reporting and process design across the UAE and international markets. Skilled at translating business requirements into structured delivery plans, building workflows from scratch and bringing clarity and ownership to complex digital initiatives.</p>
+    </div>
+    <div class="skills">
+      <div class="sk"><h3 class="h3">Core skills</h3><ul><li>Digital Project Management</li><li>Digital Delivery &amp; Operations</li><li>E-Commerce Management &amp; Operations</li><li>Web Project Management &amp; Website Delivery</li><li>Project Planning &amp; Governance</li><li>Requirements Gathering &amp; Documentation</li><li>Workflow Design &amp; Process Improvement</li><li>Cross-Functional Team Coordination</li><li>Stakeholder &amp; Vendor Management</li><li>CRM &amp; Business Process Automation</li></ul></div>
+      <div class="sk"><h3 class="h3">Web &amp; cms</h3><ul><li>HTML</li><li>CSS</li><li>Basic JavaScript</li><li>Shopify</li><li>WordPress</li><li>WooCommerce</li><li>OpenCart</li><li>CMS Management</li></ul></div>
+      <div class="sk"><h3 class="h3">Digital delivery</h3><ul><li>Website Testing</li><li>UAT</li><li>Technical Documentation</li><li>Business Requirements</li><li>Website Development Coordination</li></ul></div>
+      <div class="sk"><h3 class="h3">Data &amp; reporting</h3><ul><li>Google Sheets</li><li>Microsoft Excel</li><li>Data Import/Export</li><li>Spreadsheet Automation</li><li>Dashboard &amp; Report Preparation</li></ul></div>
+      <div class="sk"><h3 class="h3">Integrations &amp; automation</h3><ul><li>APIs</li><li>CRM Integrations</li><li>Data Migration</li><li>Marketing Automation</li><li>Business Process Automation</li></ul></div>
+      <div class="sk"><h3 class="h3">Web operations</h3><ul><li>Domain &amp; DNS Coordination</li><li>Web Performance Optimization Basics</li></ul></div>
+      <div class="sk"><h3 class="h3">Industry experience</h3><ul><li>Luxury Fashion &amp; Retail</li><li>E-Commerce &amp; Marketplaces</li><li>Real Estate / PropTech</li><li>Digital Agencies</li><li>SaaS &amp; Web Platforms</li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec" id="experience">
+    <div class="sec-head">
+      <div><h2 class="h2">Experience</h2><div class="bar"></div></div>
+      <p>From agency-side marketing operations in Kyiv to leading digital delivery for a Dubai holding group.</p>
+    </div>
+    <div class="timeline">
+      <article class="job">
+        <div><span class="yr">2025</span><span class="range">Jan 2025 – Present</span></div>
+        <div>
+          <h3>Digital Project Manager</h3>
+          <p class="org">AFM Holding, Dubai, UAE</p>
+          <ul>
+          <li>Manage digital delivery across corporate websites, SaaS, real estate, e-commerce and holding-level digital initiatives across several business units.</li>
+          <li>Coordinate website delivery from UX and content requirements through development, website testing and launch readiness.</li>
+          <li>Translate management and business requirements into structured briefs, project documentation and delivery plans for development, design, SEO, content and external vendors.</li>
+          <li>Support development of SaaS and digital product concepts, including Broker Promote and internal digital platform initiatives.</li>
+          <li>Built project tracking and reporting workflows in ClickUp across approximately 350 tasks, improving visibility, ownership and identification of blocked work.</li>
+          <li>Established structured task ownership, status reporting and follow-up processes across multiple digital initiatives.</li>
+          <li>Act as a bridge between management, marketing, design, content, SEO and development teams to maintain alignment and execution.</li>
+          <li>Improve briefing, workflow and internal communication processes across multiple projects.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2024</span><span class="range">Jun 2024 – Jan 2025</span></div>
+        <div>
+          <h3>Digital Coordinator</h3>
+          <p class="org">Kristina Fidelskaya, Dubai, UAE</p>
+          <ul>
+          <li>Led renewal and optimization of the luxury fashion brand's Shopify website, improving UX, backend workflows and operational reliability.</li>
+          <li>Coordinated CRM implementation and data migration across departments using automated scripts and structured spreadsheet workflows.</li>
+          <li>Consolidated and migrated data from legacy systems and developed import/export automation processes supporting warehouse and e-commerce operations.</li>
+          <li>Built customer communication and lifecycle workflows supporting engagement and retention.</li>
+          <li>Coordinated website-related content production, photoshoots and ongoing technical support.</li>
+          <li>Managed Shopify customer-journey and checkout-related improvements, testing and release validation across customer-facing functionality.</li>
+          <li>Coordinated Stripe setup and payment configuration within Shopify, including testing and launch validation.</li>
+          <li>Provided operational support across digital systems, hardware and software.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2021</span><span class="range">Nov 2021 – Oct 2023</span></div>
+        <div>
+          <h3>Digital E-Commerce / Operations Manager</h3>
+          <p class="org">Bullz Media, Tirana, Albania</p>
+          <ul>
+          <li>Launched a US duty-free e-commerce store and reached USD 25,000 monthly turnover within three months.</li>
+          <li>Managed digital acquisition across CPC and CPA campaigns, monitoring budgets, ROAS and performance.</li>
+          <li>Supported paid media execution through asset trafficking, tracking URL creation and pixel implementation.</li>
+          <li>Produced weekly performance reports and recommendations for stakeholders.</li>
+          <li>Integrated Keap CRM to automate order processing, payment control and delivery tracking.</li>
+          <li>Developed email and lifecycle campaigns supporting sales and repeat purchase activity.</li>
+          <li>Coordinated e-commerce operations across acquisition, CRM, order workflows and customer journeys.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2020</span><span class="range">Oct 2020 – Nov 2021</span></div>
+        <div>
+          <h3>Technical Project Manager — Web Development Operations</h3>
+          <p class="org">Wezom, Kyiv, Ukraine</p>
+          <ul>
+          <li>Managed complex e-commerce projects for fashion and pet retail clients, including continued technical delivery of the Sanahunt platform after previously working on the project from the e-commerce/business side.</li>
+          <li>Gathered business requirements and translated them into structured technical requirements, project scope and delivery tasks for UI/UX and development teams.</li>
+          <li>Coordinated UI/UX design and development processes from planning through delivery.</li>
+          <li>Managed cross-functional collaboration, priorities, timelines and project communication.</li>
+          <li>Supported website testing and delivery readiness before release.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2020</span><span class="range">Apr 2020 – Oct 2020</span></div>
+        <div>
+          <h3>Head of Digital Marketing</h3>
+          <p class="org">Bonlook, Kyiv, Ukraine</p>
+          <ul>
+          <li>Increased website traffic by 20% through coordinated PPC, SEO and CPA activities.</li>
+          <li>Managed digital campaign performance and conversion optimization.</li>
+          <li>Led content, design and social media teams while maintaining campaign performance and brand consistency.</li>
+          <li>Coordinated digital activities across marketing channels and website operations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2019</span><span class="range">Jan 2019 – Mar 2020</span></div>
+        <div>
+          <h3>Head of E-Commerce</h3>
+          <p class="org">Sanahunt Luxury Department Store, Kyiv, Ukraine</p>
+          <ul>
+          <li>Managed e-commerce operations for a luxury fashion retailer.</li>
+          <li>Increased website traffic and engagement through integrated PPC, SEO, content and social media initiatives.</li>
+          <li>Optimized checkout and payment workflows to improve the online customer journey.</li>
+          <li>Managed e-commerce budgets, content operations and customer service.</li>
+          <li>Coordinated commercial and digital activities supporting online revenue targets.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2018</span><span class="range">May 2018 – Dec 2018</span></div>
+        <div>
+          <h3>Project Manager, Digital Marketing Operations</h3>
+          <p class="org">Dentsu Aegis Network, Kyiv, Ukraine</p>
+          <ul>
+          <li>Managed paid media and website delivery projects for major clients.</li>
+          <li>Coordinated contractors across web development and design.</li>
+          <li>Supported strategic planning and project execution.</li>
+          <li>Created training materials and internal knowledge bases for team managers.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2016</span><span class="range">Sep 2016 – May 2018</span></div>
+        <div>
+          <h3>Project Manager, Digital Marketing Operations</h3>
+          <p class="org">Netpeak, Kyiv, Ukraine</p>
+          <ul>
+          <li>Managed up to 20 concurrent SEO and PPC projects.</li>
+          <li>Coordinated clients, specialists, timelines and resource allocation.</li>
+          <li>Managed service delivery and stakeholder communication across multiple accounts.</li>
+          <li>Improved workflows and processes to strengthen service quality and client satisfaction.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div><span class="yr">2015</span><span class="range">Sep 2015 – Sep 2016</span></div>
+        <div>
+          <h3>Project Manager, Digital Marketing Operations</h3>
+          <p class="org">Abweb, Kyiv, Ukraine</p>
+          <ul>
+          <li>Managed up to 28 concurrent digital marketing projects.</li>
+          <li>Developed project plans, budgets and execution strategies.</li>
+          <li>Managed client communication, project timelines and service delivery.</li>
+          <li>Analyzed project performance and implemented process improvements.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec alt" id="tools">
+    <div class="sec-head">
+      <div><h2 class="h2">Tools</h2><div class="bar"></div></div>
+      <p>The platforms and methods I use day to day to plan, build, measure and research.</p>
+    </div>
+    <div class="tools">
+      <div class="sk"><h3 class="h3">Project Management</h3><ul><li>ClickUp</li><li>Jira</li><li>Monday.com</li><li>Trello</li><li>Notion</li></ul></div>
+      <div class="sk"><h3 class="h3">E-Commerce &amp; CMS</h3><ul><li>Shopify</li><li>WordPress</li><li>WooCommerce</li><li>OpenCart</li></ul></div>
+      <div class="sk"><h3 class="h3">CRM &amp; Marketing Technology</h3><ul><li>Zoho</li><li>Keap</li><li>Zapier</li><li>Klaviyo</li><li>Mailchimp</li><li>Stripo</li><li>Google Ads</li><li>Meta Business Suite</li></ul></div>
+      <div class="sk"><h3 class="h3">Analytics &amp; SEO</h3><ul><li>Google Analytics 4</li><li>Looker Studio</li><li>Ahrefs</li><li>SEMrush</li><li>Similarweb</li><li>Hotjar</li><li>Supermetrics</li></ul></div>
+      <div class="sk"><h3 class="h3">AI &amp; Development Tools</h3><ul><li>Claude Code</li><li>Cursor</li><li>Codex</li><li>Lovable</li></ul></div>
+      <div class="sk"><h3 class="h3">Creative &amp; Operations</h3><ul><li>Canva</li><li>Photoshop</li><li>Google Sheets</li><li>Slack</li></ul></div>
+      <div class="sk"><h3 class="h3">Research Methods</h3><ul><li>Desk Research</li><li>Jobs-to-be-Done (JTBD)</li><li>Job Stories</li><li>Customer Discovery</li><li>ICP Development</li><li>Qualitative Research</li><li>Quantitative Research</li><li>In-Depth Interviews</li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec" id="education">
+    <div class="sec-head">
+      <div><h2 class="h2">Education</h2><div class="bar"></div></div>
+      <p>A computer science foundation, kept current with courses in AI, research, brand and testing.</p>
+    </div>
+    <div class="edu">
+      <div>
+        <div class="degree">
+          <h3>Master's Degree in Computer Science</h3>
+          <p class="org">National Aviation University, Kyiv, 2018</p>
+          <p>Relevant academic areas: Systems Analysis, Mathematical Modelling, Databases, SQL, Statistics &amp; Probability, Algorithms, Object-Oriented Programming, Numerical Analysis and Mathematical Optimization.</p>
+        </div>
+        <div class="langs">
+          <h3 class="h3">Languages</h3>
+          <ul>
+            <li>English <span>Advanced</span></li>
+            <li>Ukrainian <span>Fluent</span></li>
+            <li>Russian <span>Fluent</span></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 class="h3" style="margin-bottom:14px">Certifications</h3>
+        <ul class="certs">
+          <li><div class="top"><strong>AI Fluency Framework &amp; Foundations</strong><em>Anthropic, 2026</em></div><p>AI Fluency, AI-Assisted Workflows, Claude</p></li>
+          <li><div class="top"><strong>Artificial Intelligence Fundamentals</strong><em>IBM, 2026</em></div><p>Artificial Intelligence, Artificial Neural Networks</p></li>
+          <li><div class="top"><strong>Marketing Research &amp; Discovery</strong><em>Green Duck Research / 4Press, 2026</em></div><p>Desk Research, JTBD, Job Stories, ICP Development, Customer Discovery, Qualitative &amp; Quantitative Research, In-Depth Interviews</p></li>
+          <li><div class="top"><strong>Mailchimp Essential Training</strong><em>LinkedIn Learning, 2024</em></div><p>Email Marketing, Mailchimp</p></li>
+          <li><div class="top"><strong>Brand Management: Aligning Business, Brand and Behaviour</strong><em>London Business School, 2023</em></div><p>Brand Management, Brand Marketing, Brand Identity, Corporate Branding</p></li>
+          <li><div class="top"><strong>Entrepreneurship START</strong><em>UNIT School of Business, 2021</em></div><p>Product Development, Market Research, Business Strategy, Design Thinking, Problem Solving, Pitching</p></li>
+          <li><div class="top"><strong>Software Testing Essentials</strong><em>QA START UP, 2015</em></div><p>Manual Testing, Quality Assurance, Software Testing Fundamentals</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contact">
+    <h2 class="h2">Contact</h2>
+    <div class="bar"></div>
+    <a class="mail" href="mailto:polya.uspenskaya@gmail.com">polya.uspenskaya@gmail.com</a>
+    <div class="contact-row">
+      <div><span>Phone</span><a href="tel:+971588248074">+971 58 824 80 74</a></div>
+      <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/polina-uspenska/" target="_blank" rel="noopener">in/polina-uspenska</a></div>
+      <div><span>Location</span>Dubai, UAE</div>
+    </div>
+    <a class="btn" href="../Polina_Uspenska_CV.pdf" download>Download CV as PDF</a>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.querySelector('.theme-btn');
+    var label = btn.querySelector('span');
+    function isDark() {
+      var t = root.getAttribute('data-theme');
+      if (t) return t === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    function sync() { label.textContent = isDark() ? 'Light mode' : 'Dark mode'; }
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('pu-theme', next); } catch (e) {}
+      sync();
+    });
+    sync();
+
+    var menuBtn = document.querySelector('.menu-btn');
+    function closeMenu() { document.body.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = 'Menu'; }
+    menuBtn.addEventListener('click', function () {
+      var open = document.body.classList.toggle('menu-open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? 'Close' : 'Menu';
+    });
+    document.querySelectorAll('.nav a, .mark').forEach(function (a) { a.addEventListener('click', closeMenu); });
+
+    var links = {};
+    document.querySelectorAll('.nav a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var id = e.target.id;
+          Object.keys(links).forEach(function (k) { links[k].classList.toggle('is-active', k === id); });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(links).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    }
+  })();
+</script>
+</body>
+</html>
