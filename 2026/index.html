@@ -163,7 +163,7 @@
 
   .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 72px; align-items: start; }
   .about-grid .btn { display: inline-block; }
-  .about-grid > div:last-child { padding-top: calc(clamp(44px, 4.6vw, 72px) + 65px); }
+  .about-grid > div:last-child { padding-top: calc(clamp(44px, 4.6vw, 72px) + 40px); }
 
   /* headings shared */
   .h2 {
@@ -192,7 +192,7 @@
   .facts a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .about .h3 { margin: 0 0 14px; }
   .about p.lead { max-width: 60ch; font-size: 16px; }
-  .about .facts { margin-top: 0; }
+  .about .facts { margin-top: 40px; }
 
   .btn {
     display: inline-block; align-self: flex-start;
@@ -219,7 +219,7 @@
   .sec.alt { background: var(--bg-alt); }
   .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 60px; align-items: start; margin-bottom: 56px; }
   .sec-head .bar { margin-bottom: 0; }
-  .sec-head p { max-width: 60ch; padding-top: .5em; border-left: 1px solid var(--taupe); padding-left: 28px; }
+  .sec-head p { max-width: 60ch; padding-top: .5em; }
 
   /* skills */
   .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 64px; }
@@ -278,7 +278,7 @@
   /* contact */
   .contact { background: var(--navy); color: var(--ivory); }
     .contact .h2 { color: var(--ivory); }
-  .contact .bar { background: var(--champagne); }
+  .contact .h2 { margin-bottom: 40px; }
   .mail {
     display: inline-block;
     font-family: var(--display);
@@ -445,7 +445,7 @@
     <div class="about-grid">
       <div>
         <h2 class="h2">About</h2>
-        <div class="bar"></div>
+        
         <ul class="facts">
         <li><span>Name</span><b>Polina Uspenska</b></li>
         <li><span>Based in</span><b>Dubai, UAE</b></li>
@@ -467,7 +467,7 @@
   <div class="page-wrap" id="skills">
   <section class="sec alt page">
     <div class="sec-head">
-      <div><h2 class="h2">Skills</h2><div class="bar"></div></div>
+      <div><h2 class="h2">Skills</h2></div>
       <p>Strong working knowledge of CMS and e-commerce platforms, CRM automation, integrations, reporting and process design across the UAE and international markets. Skilled at translating business requirements into structured delivery plans, building workflows from scratch and bringing clarity and ownership to complex digital initiatives.</p>
     </div>
     <div class="skills">
@@ -485,7 +485,7 @@
   <div class="page-wrap" id="experience">
   <section class="sec page">
     <div class="sec-head">
-      <div><h2 class="h2">Experience</h2><div class="bar"></div></div>
+      <div><h2 class="h2">Experience</h2></div>
       <p>From agency-side marketing operations in Kyiv to leading digital delivery for a Dubai holding group.</p>
     </div>
     <div class="timeline">
@@ -626,7 +626,7 @@
   <div class="page-wrap" id="tools">
   <section class="sec alt page">
     <div class="sec-head">
-      <div><h2 class="h2">Tools</h2><div class="bar"></div></div>
+      <div><h2 class="h2">Tools</h2></div>
       <p>The platforms and methods I use day to day to plan, build, measure and research.</p>
     </div>
     <div class="tools">
@@ -644,7 +644,7 @@
   <div class="page-wrap" id="education">
   <section class="sec page">
     <div class="sec-head">
-      <div><h2 class="h2">Education</h2><div class="bar"></div></div>
+      <div><h2 class="h2">Education</h2></div>
       <p>A computer science foundation, kept current with courses in AI, research, brand and testing.</p>
     </div>
     <div class="edu">
@@ -682,7 +682,7 @@
   <div class="page-wrap" id="contact">
   <section class="sec contact page">
     <h2 class="h2">Contact</h2>
-    <div class="bar"></div>
+    
     <a class="mail" href="mailto:polya.uspenskaya@gmail.com">polya.uspenskaya@gmail.com</a>
     <div class="contact-row">
       <div><span>Phone</span><a href="tel:+971588248074">+971 58 824 80 74</a></div>
