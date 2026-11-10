@@ -300,16 +300,25 @@
   .contact .btn::before { background: var(--champagne); }
   .contact .btn:hover { color: var(--navy); }
 
-  /* book-page opening: each section swings open from its left edge */
+  /* book-page opening: each section swings open from its left edge.
+     The frame never transforms, so the page can't spill over its neighbours
+     and the scroll trigger measures the real position. */
+  .page-wrap { position: relative; overflow: clip; perspective: 1700px; perspective-origin: 0 320px; }
+  .page { position: relative; }
   .js .page {
-    transform-origin: left center;
-    transform: perspective(2200px) rotateY(-62deg);
+    transform-origin: 0 320px;
+    transform: rotateY(-86deg);
     opacity: 0;
-    transition: transform 1.25s cubic-bezier(.22,.8,.24,1), opacity .9s ease;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
+    transition: transform 1.6s cubic-bezier(.6,.05,.25,1), opacity .35s ease;
+    will-change: transform;
   }
-  .js .page.is-open { transform: perspective(2200px) rotateY(0deg); opacity: 1; }
+  .js .page::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 5;
+    background: linear-gradient(to right, rgba(17,34,80,.04) 0%, rgba(17,34,80,.5) 100%);
+    transition: opacity 1.4s ease .2s;
+  }
+  .js .page.is-open { transform: rotateY(0deg); opacity: 1; }
+  .js .page.is-open::after { opacity: 0; }
 
   /* ───────── RESPONSIVE ───────── */
   @media (max-width: 1180px) {
@@ -369,6 +378,7 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .js .page { transform: none; opacity: 1; }
+    .js .page::after { display: none; }
     html { scroll-behavior: auto; }
   }
   @media print {
@@ -377,6 +387,7 @@
     .hero { min-height: auto; }
     .job, .certs li { break-inside: avoid; }
     .js .page { transform: none !important; opacity: 1 !important; }
+    .js .page::after { display: none; }
   }
 </style>
 </head>
@@ -429,7 +440,8 @@
     </div>
   </section>
 
-  <section class="sec about page" id="about">
+  <div class="page-wrap" id="about">
+  <section class="sec about page">
     <div class="about-grid">
       <div>
         <h2 class="h2">About</h2>
@@ -450,8 +462,10 @@
       </div>
     </div>
   </section>
+  </div>
 
-  <section class="sec alt page" id="skills">
+  <div class="page-wrap" id="skills">
+  <section class="sec alt page">
     <div class="sec-head">
       <div><h2 class="h2">Skills</h2><div class="bar"></div></div>
       <p>Strong working knowledge of CMS and e-commerce platforms, CRM automation, integrations, reporting and process design across the UAE and international markets. Skilled at translating business requirements into structured delivery plans, building workflows from scratch and bringing clarity and ownership to complex digital initiatives.</p>
@@ -466,8 +480,10 @@
       <div class="sk"><h3 class="h3">Industry experience</h3><ul><li>Luxury Fashion &amp; Retail</li><li>E-Commerce &amp; Marketplaces</li><li>Real Estate / PropTech</li><li>Digital Agencies</li><li>SaaS &amp; Web Platforms</li></ul></div>
     </div>
   </section>
+  </div>
 
-  <section class="sec page" id="experience">
+  <div class="page-wrap" id="experience">
+  <section class="sec page">
     <div class="sec-head">
       <div><h2 class="h2">Experience</h2><div class="bar"></div></div>
       <p>From agency-side marketing operations in Kyiv to leading digital delivery for a Dubai holding group.</p>
@@ -605,8 +621,10 @@
       </article>
     </div>
   </section>
+  </div>
 
-  <section class="sec alt page" id="tools">
+  <div class="page-wrap" id="tools">
+  <section class="sec alt page">
     <div class="sec-head">
       <div><h2 class="h2">Tools</h2><div class="bar"></div></div>
       <p>The platforms and methods I use day to day to plan, build, measure and research.</p>
@@ -621,8 +639,10 @@
       <div class="sk"><h3 class="h3">Research Methods</h3><ul><li>Desk Research</li><li>Jobs-to-be-Done (JTBD)</li><li>Job Stories</li><li>Customer Discovery</li><li>ICP Development</li><li>Qualitative Research</li><li>Quantitative Research</li><li>In-Depth Interviews</li></ul></div>
     </div>
   </section>
+  </div>
 
-  <section class="sec page" id="education">
+  <div class="page-wrap" id="education">
+  <section class="sec page">
     <div class="sec-head">
       <div><h2 class="h2">Education</h2><div class="bar"></div></div>
       <p>A computer science foundation, kept current with courses in AI, research, brand and testing.</p>
@@ -657,8 +677,10 @@
       </div>
     </div>
   </section>
+  </div>
 
-  <section class="sec contact page" id="contact">
+  <div class="page-wrap" id="contact">
+  <section class="sec contact page">
     <h2 class="h2">Contact</h2>
     <div class="bar"></div>
     <a class="mail" href="mailto:polya.uspenskaya@gmail.com">polya.uspenskaya@gmail.com</a>
@@ -669,6 +691,7 @@
     </div>
     <a class="btn" href="../Polina_Uspenska_CV.pdf" download>Download CV as PDF</a>
   </section>
+  </div>
 </main>
 
 <script>
@@ -689,10 +712,10 @@
     } else {
       var po = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('is-open'); po.unobserve(e.target); }
+          if (e.isIntersecting) { e.target.querySelector('.page').classList.add('is-open'); po.unobserve(e.target); }
         });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
-      pages.forEach(function (p) { po.observe(p); });
+      }, { rootMargin: '0px 0px -25% 0px', threshold: 0 });
+      document.querySelectorAll('.page-wrap').forEach(function (w) { po.observe(w); });
     }
 
     var links = {};
