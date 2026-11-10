@@ -20,7 +20,7 @@
     --ivory: #F5F4F0;
 
     --bg: var(--ivory);
-    --bg-alt: var(--champagne);
+    --bg-alt: var(--ivory);
     --ink: var(--navy);
     --ink-soft: #3d4a6b;
     --muted: #6b7591;
@@ -300,25 +300,31 @@
   .contact .btn::before { background: var(--champagne); }
   .contact .btn:hover { color: var(--navy); }
 
-  /* book-page opening: each section swings open from its left edge.
-     The frame never transforms, so the page can't spill over its neighbours
-     and the scroll trigger measures the real position. */
-  .page-wrap { position: relative; overflow: clip; perspective: 1700px; perspective-origin: 0 320px; }
+  /* book page: an ivory sheet, hinged on the section's right edge, lifts and
+     turns away to the right, uncovering the section from left to right */
+  .page-wrap { position: relative; overflow: clip; perspective: 2400px; perspective-origin: 100% 360px; }
   .page { position: relative; }
-  .js .page {
-    transform-origin: 0 320px;
-    transform: rotateY(-86deg);
+  .sheet {
+    position: absolute; inset: 0; z-index: 6; pointer-events: none;
+    background: var(--ivory);
+    transform-origin: 100% 360px;
+    transform: rotateY(0deg);
+    transition: transform 1.9s cubic-bezier(.55,.06,.28,1);
+    box-shadow: 0 0 0 rgba(17,34,80,0);
+    backface-visibility: hidden;
+  }
+  .sheet::before {             /* paper shading that deepens as the page lifts */
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(17,34,80,.16) 0%, rgba(17,34,80,.04) 35%, rgba(255,255,255,.35) 85%, rgba(17,34,80,.10) 100%);
     opacity: 0;
-    transition: transform 1.6s cubic-bezier(.6,.05,.25,1), opacity .35s ease;
-    will-change: transform;
   }
-  .js .page::after {
-    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 5;
-    background: linear-gradient(to right, rgba(17,34,80,.04) 0%, rgba(17,34,80,.5) 100%);
-    transition: opacity 1.4s ease .2s;
+  .sheet::after {              /* fold line at the spine */
+    content: ''; position: absolute; top: 0; bottom: 0; right: 0; width: 26px;
+    background: linear-gradient(to left, rgba(17,34,80,.10), rgba(17,34,80,0));
   }
-  .js .page.is-open { transform: rotateY(0deg); opacity: 1; }
-  .js .page.is-open::after { opacity: 0; }
+  .page-wrap.is-open .sheet { transform: rotateY(-178deg); box-shadow: -30px 0 60px rgba(17,34,80,.22); }
+  .page-wrap.is-open .sheet::before { animation: paperShade 1.9s ease forwards; }
+  @keyframes paperShade { 0% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: 1; } }
 
   /* ───────── RESPONSIVE ───────── */
   @media (max-width: 1180px) {
@@ -424,8 +430,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
-    .js .page { transform: none; opacity: 1; }
-    .js .page::after { display: none; }
+    .sheet { display: none; }
     html { scroll-behavior: auto; }
   }
   @media print {
@@ -433,8 +438,7 @@
     main { margin-left: 0; padding-top: 0; }
     .hero { min-height: auto; }
     .job, .certs li { break-inside: avoid; }
-    .js .page { transform: none !important; opacity: 1 !important; }
-    .js .page::after { display: none; }
+    .sheet { display: none !important; }
   }
 </style>
 </head>
@@ -752,17 +756,23 @@
     });
     document.querySelectorAll('.nav a, .mark').forEach(function (a) { a.addEventListener('click', closeMenu); });
 
-    var pages = document.querySelectorAll('.page');
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!('IntersectionObserver' in window) || reduce) {
-      pages.forEach(function (p) { p.classList.add('is-open'); });
-    } else {
+    if ('IntersectionObserver' in window && !reduce) {
+      var wraps = document.querySelectorAll('.page-wrap');
+      wraps.forEach(function (w) {
+        var sh = document.createElement('div');
+        sh.className = 'sheet'; sh.setAttribute('aria-hidden', 'true');
+        w.appendChild(sh);
+      });
       var po = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.querySelector('.page').classList.add('is-open'); po.unobserve(e.target); }
+          if (!e.isIntersecting) return;
+          var w = e.target;
+          w.classList.add('is-open'); po.unobserve(w);
+          setTimeout(function () { var sh = w.querySelector('.sheet'); if (sh) sh.remove(); }, 2100);
         });
       }, { rootMargin: '0px 0px -25% 0px', threshold: 0 });
-      document.querySelectorAll('.page-wrap').forEach(function (w) { po.observe(w); });
+      wraps.forEach(function (w) { po.observe(w); });
     }
 
     var links = {};
